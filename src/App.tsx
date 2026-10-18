@@ -35,7 +35,7 @@ function LoadingScreen({ onDone }: { onDone: () => void }) {
         className="flex flex-col items-center justify-center relative px-4"
       >
         <img
-          src="/varga-logo.png"
+          src={`${import.meta.env.BASE_URL}varga-logo.png`}
           alt="VARGA"
           className="h-20 sm:h-28 w-auto object-contain mb-4 filter drop-shadow-[0_10px_25px_rgba(192,57,43,0.25)]"
         />

@@ -58,7 +58,7 @@ export function Hero() {
         aria-hidden="true"
       >
         <img
-          src="/varga-logo.png"
+          src={`${import.meta.env.BASE_URL}varga-logo.png`}
           alt=""
           className="w-[280px] sm:w-[420px] md:w-[580px] opacity-[0.035] filter invert pointer-events-none"
         />

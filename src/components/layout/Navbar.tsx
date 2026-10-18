@@ -64,7 +64,7 @@ export function Navbar() {
               aria-label="VARGA — go to home"
             >
               <img
-                src="/varga-logo.png"
+                src={`${import.meta.env.BASE_URL}varga-logo.png`}
                 alt="VARGA Logo"
                 className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
@@ -129,7 +129,7 @@ export function Navbar() {
             <div className="flex items-center justify-between border-b border-white/[0.08] pb-5">
               <div className="flex items-center gap-3">
                 <img
-                  src="/varga-logo.png"
+                  src={`${import.meta.env.BASE_URL}varga-logo.png`}
                   alt="VARGA Logo"
                   className="h-10 w-auto object-contain"
                 />

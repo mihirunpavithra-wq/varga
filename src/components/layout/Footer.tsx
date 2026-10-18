@@ -24,7 +24,7 @@ export function Footer() {
               aria-label="VARGA — back to top"
             >
               <img
-                src="/varga-logo.png"
+                src={`${import.meta.env.BASE_URL}varga-logo.png`}
                 alt="VARGA Logo"
                 className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
