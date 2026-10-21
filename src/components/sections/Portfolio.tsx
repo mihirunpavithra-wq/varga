@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, X, MessageCircle } from 'lucide-react';
 import { projects, type Project, type ProjectCategory, contactInfo } from '@/data/content';
@@ -107,7 +107,12 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
 }
 
 function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
+  const [activeImage, setActiveImage] = useState(project.image);
   const bg = project.placeholder ? (placeholderPatterns[project.placeholder] ?? { background: '#1a1a1a' }) : { background: '#111111' };
+
+  useEffect(() => {
+    setActiveImage(project.image);
+  }, [project]);
 
   const whatsappInquiryUrl = `${contactInfo.whatsappLink}?text=${encodeURIComponent(
     `Hello VARGA! I'm interested in discussing a project similar to "${project.title}" (${project.category}).`
@@ -151,11 +156,11 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
 
           {/* Image area */}
           <div className="relative aspect-[16/10] sm:aspect-video overflow-hidden flex-shrink-0 bg-[#080808]" style={bg}>
-            {project.image ? (
+            {activeImage ? (
               <img
-                src={project.image}
+                src={activeImage}
                 alt={project.title}
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-cover object-center transition-all duration-300"
               />
             ) : null}
             <div className="absolute inset-0 cinematic-gradient pointer-events-none" />
@@ -178,6 +183,31 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                 {project.title}
               </h2>
             </div>
+
+            {/* Gallery Thumbnails (if multiple photos available) */}
+            {project.gallery && project.gallery.length > 1 && (
+              <div className="space-y-2 pt-1 pb-1">
+                <p className="font-heading text-[10px] sm:text-[11px] text-varga-red uppercase tracking-widest font-semibold">
+                  Shoot Gallery ({project.gallery.length} Photos)
+                </p>
+                <div className="flex items-center gap-2.5 overflow-x-auto pb-1">
+                  {project.gallery.map((imgUrl, idx) => (
+                    <button
+                      key={imgUrl}
+                      onClick={() => setActiveImage(imgUrl)}
+                      className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-sm overflow-hidden border-2 transition-all active:scale-95 flex-shrink-0 touch-manipulation ${
+                        activeImage === imgUrl
+                          ? 'border-varga-red ring-2 ring-varga-red/40 scale-105'
+                          : 'border-white/20 opacity-60 hover:opacity-100'
+                      }`}
+                      aria-label={`Switch to photo ${idx + 1}`}
+                    >
+                      <img src={imgUrl} alt="" className="w-full h-full object-cover" />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
             <p className="font-body text-varga-muted text-sm sm:text-base leading-relaxed">
               {project.fullDescription}

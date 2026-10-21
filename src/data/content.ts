@@ -16,6 +16,7 @@ export interface Project {
   fullDescription: string;
   placeholder?: string; // gradient / color used as fallback
   image?: string; // real photograph URL
+  gallery?: string[]; // optional additional gallery images
   tags: string[];
   isDemo?: boolean;
 }
@@ -42,6 +43,10 @@ export const projects: Project[] = [
     fullDescription:
       'A cinematic portrait photoshoot capturing celebration and elegance. Styled with vibrant red roses, dark attire, and soft ambient lighting to create a timeless, artistic memory.',
     image: `${import.meta.env.BASE_URL}birthday-shoot.jpg`,
+    gallery: [
+      `${import.meta.env.BASE_URL}birthday-shoot.jpg`,
+      `${import.meta.env.BASE_URL}rose-bouquet-portrait.jpg`,
+    ],
     tags: ['Birthday Shoot', 'Portrait', 'Lifestyle Photography', 'Studio Lighting'],
     isDemo: false,
   },
@@ -54,6 +59,10 @@ export const projects: Project[] = [
     fullDescription:
       'An elegant portrait session celebrating love and milestones. Styled with an exquisite bouquet of deep crimson roses wrapped in matte black luxury wrapping, captured with soft portrait depth of field and warm ambient lighting.',
     image: `${import.meta.env.BASE_URL}rose-bouquet-portrait.jpg`,
+    gallery: [
+      `${import.meta.env.BASE_URL}rose-bouquet-portrait.jpg`,
+      `${import.meta.env.BASE_URL}birthday-shoot.jpg`,
+    ],
     tags: ['Photography', 'Celebration Portrait', 'Rose Bouquet', 'Studio Session'],
     isDemo: false,
   },
