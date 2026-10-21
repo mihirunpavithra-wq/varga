@@ -22,6 +22,18 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 'cinematography-shoot-01',
+    title: 'Urban Portrait Cinematic Session',
+    category: 'Cinematography',
+    year: 2024,
+    description: 'Outdoor cinematic capture with natural depth of field and authentic urban mood.',
+    fullDescription:
+      'A natural light cinematic portrait study showcasing candid emotion, outdoor atmosphere, and rich color tones. Captured with attention to subtle movement and cinematic framing.',
+    image: `${import.meta.env.BASE_URL}cinematography-shoot.jpg`,
+    tags: ['Cinematography', 'Outdoor Session', 'Color Grade', 'Visual Storytelling'],
+    isDemo: false,
+  },
+  {
     id: 'birthday-shoot-01',
     title: 'Birthday Shoot',
     category: 'Photography',
