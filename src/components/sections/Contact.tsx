@@ -89,19 +89,26 @@ export function Contact() {
     return Object.keys(e).length === 0;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
-    setFormState('submitting');
+    const lines = [
+      "*New Project Enquiry — VARGA Creative Studio*",
+      "",
+      `*Name:* ${data.name.trim()}`,
+      `*Email:* ${data.email.trim()}`,
+      `*Service:* ${data.projectType}`,
+      data.budget ? `*Estimated Budget:* ${data.budget}` : null,
+      data.deadline ? `*Deadline:* ${data.deadline.trim()}` : null,
+      "",
+      "*Project Details:*",
+      data.message.trim(),
+    ].filter(Boolean);
 
-    // ⚠️ No backend is configured. This is a demonstration only.
-    // To connect a real backend, replace this timeout with a fetch/axios call
-    // to your API endpoint, email service (Resend, EmailJS, Formspree, etc.)
-    await new Promise((res) => setTimeout(res, 1800));
-
-    // For demonstration purposes we show a "no backend" notice:
-    setFormState('error');
+    const whatsappUrl = `https://wa.me/94770498850?text=${encodeURIComponent(lines.join("\n"))}`;
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    setFormState("success");
   };
 
   const update = (key: keyof FormData) => (
@@ -165,13 +172,10 @@ export function Contact() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                 >
-                  {/* Backend notice banner */}
-                  <div className="bg-[#1a1a0a] border border-yellow-900/40 px-4 py-3 flex gap-3">
-                    <AlertCircle size={16} className="text-yellow-600 flex-shrink-0 mt-0.5" />
-                    <p className="font-body text-yellow-600/80 text-xs leading-relaxed">
-                      <strong>Demo mode:</strong> No backend is connected. Form submissions will not be sent.
-                      Connect an email service (e.g. Resend, EmailJS, or Formspree) in{' '}
-                      <code className="text-yellow-500/80">Contact.tsx</code> before going live.
+                  <div className="bg-[#0f1f14] border border-emerald-900/50 px-4 py-3 flex items-center gap-3">
+                    <MessageCircle size={18} className="text-emerald-400 flex-shrink-0" />
+                    <p className="font-body text-emerald-400/90 text-xs leading-relaxed">
+                      Submit කළ සැණින් ඔබගේ විස්තර සමඟ අපගේ <strong>WhatsApp (+94 77 049 8850)</strong> chat එක කෙලින්ම විවෘත වේ.
                     </p>
                   </div>
 
@@ -267,19 +271,7 @@ export function Contact() {
                     />
                   </FormField>
 
-                  {/* Form error state */}
-                  {formState === 'error' && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="bg-[#1a0a0a] border border-varga-red/30 px-4 py-3 flex gap-3"
-                    >
-                      <AlertCircle size={16} className="text-varga-red flex-shrink-0 mt-0.5" />
-                      <p className="font-body text-varga-red/80 text-sm">
-                        No backend is configured yet. Please contact us directly via WhatsApp or email below.
-                      </p>
-                    </motion.div>
-                  )}
+
 
                   <button
                     type="submit"
@@ -294,7 +286,8 @@ export function Contact() {
                       </>
                     ) : (
                       <>
-                        Send Enquiry
+                        <MessageCircle size={18} />
+                        Send via WhatsApp
                         <ArrowUpRight size={16} />
                       </>
                     )}
