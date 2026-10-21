@@ -46,6 +46,18 @@ export const projects: Project[] = [
     isDemo: false,
   },
   {
+    id: 'rose-bouquet-portrait-01',
+    title: 'Crimson Bloom Celebration Portrait',
+    category: 'Photography',
+    year: 2024,
+    description: 'Intimate celebration portrait capturing heartfelt emotion with a grand bouquet of red roses.',
+    fullDescription:
+      'An elegant portrait session celebrating love and milestones. Styled with an exquisite bouquet of deep crimson roses wrapped in matte black luxury wrapping, captured with soft portrait depth of field and warm ambient lighting.',
+    image: `${import.meta.env.BASE_URL}rose-bouquet-portrait.jpg`,
+    tags: ['Photography', 'Celebration Portrait', 'Rose Bouquet', 'Studio Session'],
+    isDemo: false,
+  },
+  {
     id: 'commercial-nature-01',
     title: 'Enchanted Waters Commercial Study',
     category: 'Commercial Videos',
