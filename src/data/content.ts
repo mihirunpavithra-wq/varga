@@ -46,6 +46,42 @@ export const projects: Project[] = [
     isDemo: false,
   },
   {
+    id: 'commercial-nature-01',
+    title: 'Enchanted Waters Commercial Study',
+    category: 'Commercial Videos',
+    year: 2024,
+    description: 'Striking promotional visual featuring water motion, red satin contrast, and forest ambiance.',
+    fullDescription:
+      'A cinematic commercial shoot set within wetland forest waters. Designed with dynamic water splashes, bold red styling against lush greens, and high-speed freeze-frame cinematography.',
+    image: `${import.meta.env.BASE_URL}enchanted-waters-commercial.jpg`,
+    tags: ['Commercial Videos', 'Water Motion', 'Fashion Cinematography', 'Color Grade'],
+    isDemo: false,
+  },
+  {
+    id: 'photography-forest-01',
+    title: 'Bloom & Solitude Editorial Portrait',
+    category: 'Photography',
+    year: 2024,
+    description: 'Editorial outdoor portrait blending natural wetland textures with floral elegance.',
+    fullDescription:
+      'A fine-art editorial photography series set in serene natural environments. Focuses on delicate white florals, satin red dress accents, and rich atmospheric natural light.',
+    image: `${import.meta.env.BASE_URL}red-serenity-portrait.jpg`,
+    tags: ['Editorial Portrait', 'Outdoor Photography', 'Natural Light', 'Fine Art'],
+    isDemo: false,
+  },
+  {
+    id: 'digital-content-celebration-01',
+    title: 'Joy & Air Social Campaign',
+    category: 'Digital Content',
+    year: 2024,
+    description: 'Vibrant celebratory lifestyle visual content tailored for high-engagement social reels.',
+    fullDescription:
+      'High-energy short-form visual content created for digital brands and personal celebrations. Featuring colorful balloons, natural smiles, and eye-catching outdoor aesthetics optimized for social media.',
+    image: `${import.meta.env.BASE_URL}celebration-lifestyle-content.jpg`,
+    tags: ['Digital Content', 'Social Reels', 'Lifestyle Celebration', 'Short-form'],
+    isDemo: false,
+  },
+  {
     id: 'demo-01',
     title: 'Horizon Brand Film',
     category: 'Cinematography',
