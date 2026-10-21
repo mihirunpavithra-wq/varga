@@ -1,5 +1,5 @@
 import { ArrowUp, Mail } from 'lucide-react';
-import { Instagram, Youtube } from '@/components/ui/Icons';
+import { Instagram, Youtube, Facebook } from '@/components/ui/Icons';
 import { navLinks, contactInfo } from '@/data/content';
 
 export function Footer() {
@@ -38,15 +38,6 @@ export function Footer() {
             </p>
             <div className="flex gap-3">
               <a
-                href={contactInfo.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 border border-white/[0.1] flex items-center justify-center text-varga-muted hover:border-varga-red hover:text-varga-red transition-all"
-                aria-label="VARGA on Instagram"
-              >
-                <Instagram size={15} />
-              </a>
-              <a
                 href={contactInfo.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -54,6 +45,24 @@ export function Footer() {
                 aria-label="VARGA on YouTube"
               >
                 <Youtube size={15} />
+              </a>
+              <a
+                href={contactInfo.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 border border-white/[0.1] flex items-center justify-center text-varga-muted hover:border-varga-red hover:text-varga-red transition-all"
+                aria-label="VARGA on Facebook"
+              >
+                <Facebook size={15} />
+              </a>
+              <a
+                href={contactInfo.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 border border-white/[0.1] flex items-center justify-center text-varga-muted hover:border-varga-red hover:text-varga-red transition-all"
+                aria-label="VARGA on Instagram"
+              >
+                <Instagram size={15} />
               </a>
               <a
                 href={`mailto:${contactInfo.email}`}

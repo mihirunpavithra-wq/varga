@@ -1,7 +1,7 @@
 import { useState, useId } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, MessageCircle, MapPin, ArrowUpRight, CheckCircle, AlertCircle } from 'lucide-react';
-import { Instagram, Youtube } from '@/components/ui/Icons';
+import { Instagram, Youtube, Facebook } from '@/components/ui/Icons';
 import { contactInfo } from '@/data/content';
 import { Reveal } from '@/components/ui/Reveal';
 
@@ -372,17 +372,7 @@ export function Contact() {
             {/* Social */}
             <div>
               <p className="form-label mb-4">Follow Our Work</p>
-              <div className="flex gap-3">
-                <a
-                  href={contactInfo.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 border border-white/[0.08] px-4 py-2.5 text-varga-muted hover:border-varga-red hover:text-varga-red transition-all duration-200"
-                  aria-label="VARGA on Instagram"
-                >
-                  <Instagram size={15} />
-                  <span className="font-heading text-xs tracking-widest uppercase">Instagram</span>
-                </a>
+              <div className="flex flex-wrap gap-3">
                 <a
                   href={contactInfo.youtube}
                   target="_blank"
@@ -392,6 +382,26 @@ export function Contact() {
                 >
                   <Youtube size={15} />
                   <span className="font-heading text-xs tracking-widest uppercase">YouTube</span>
+                </a>
+                <a
+                  href={contactInfo.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 border border-white/[0.08] px-4 py-2.5 text-varga-muted hover:border-varga-red hover:text-varga-red transition-all duration-200"
+                  aria-label="VARGA on Facebook"
+                >
+                  <Facebook size={15} />
+                  <span className="font-heading text-xs tracking-widest uppercase">Facebook</span>
+                </a>
+                <a
+                  href={contactInfo.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 border border-white/[0.08] px-4 py-2.5 text-varga-muted hover:border-varga-red hover:text-varga-red transition-all duration-200"
+                  aria-label="VARGA on Instagram"
+                >
+                  <Instagram size={15} />
+                  <span className="font-heading text-xs tracking-widest uppercase">Instagram</span>
                 </a>
               </div>
             </div>

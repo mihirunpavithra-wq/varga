@@ -205,12 +205,12 @@ export const navLinks = [
 ];
 
 // ─── Contact Info ─────────────────────────────────────────────────────────
-// ⚠️  REPLACE these with your real contact details before going live
 export const contactInfo = {
-  email: 'hello@vargastudio.lk',         // ← replace
-  whatsapp: '+94 77 000 0000',           // ← replace
-  whatsappLink: 'https://wa.me/9477000000', // ← replace
-  instagram: 'https://instagram.com/vargastudio', // ← replace
-  youtube: 'https://youtube.com/@vargastudio',    // ← replace
+  email: 'hello@vargastudio.lk',
+  whatsapp: '+94 77 049 8850',
+  whatsappLink: 'https://wa.me/94770498850',
+  youtube: 'https://youtube.com/@vargaproduction',
+  facebook: 'https://web.facebook.com/people/VARGA/61595343985644/',
+  instagram: 'https://instagram.com/vargastudio',
   location: 'Sri Lanka',
 };
