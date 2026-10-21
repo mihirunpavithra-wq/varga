@@ -127,6 +127,22 @@ export const projects: Project[] = [
     isDemo: false,
   },
   {
+    id: 'lakeside-flute-melody-01',
+    title: 'Lakeside Flute Melody Portrait',
+    category: 'Photography',
+    year: 2024,
+    description: 'Traditional flute melody portrait on the stone pier with purple lotus blooms and lush lakeside scenery.',
+    fullDescription:
+      'A cultural fine-art portrait session set against serene lake waters. Featuring an intimate musical moment with a wooden flute, purple lotus flowers, traditional styling, and soft outdoor daylight.',
+    image: `${import.meta.env.BASE_URL}lakeside-flute-portrait.jpg`,
+    gallery: [
+      `${import.meta.env.BASE_URL}lakeside-flute-portrait.jpg`,
+      `${import.meta.env.BASE_URL}lakeside-flute-portrait-v2.jpg`,
+    ],
+    tags: ['Photography', 'Flute Melody', 'Cultural Portrait', 'Lakeside Session', 'Fine Art'],
+    isDemo: false,
+  },
+  {
     id: 'demo-01',
     title: 'Horizon Brand Film',
     category: 'Cinematography',
