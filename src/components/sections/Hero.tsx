@@ -15,37 +15,37 @@ export function Hero() {
       className="relative min-h-screen flex flex-col justify-end overflow-hidden"
       aria-label="Hero — VARGA Creative Studio"
     >
-      {/* ── Cinematic Background ─────────────────────────────────── */}
-      <div className="absolute inset-0 z-0">
-        {/* Base dark gradient — replace with <video> or <img> when ready */}
+      {/* ── Cinematic Video Background ─────────────────────────── */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+        {/* Responsive looping YouTube background video */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160vw] h-[160vh] min-w-[100%] min-h-[100%] opacity-45 scale-105 sm:scale-110">
+          <iframe
+            src="https://www.youtube.com/embed/AQtnBSXYVK8?autoplay=1&mute=1&loop=1&playlist=AQtnBSXYVK8&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
+            title="VARGA Cinematic Showreel"
+            className="w-full h-full pointer-events-none"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            tabIndex={-1}
+            aria-hidden="true"
+          />
+        </div>
+
+        {/* Cinematic dark tint & vignette overlay */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 bg-[#080808]/65"
           style={{
             background: `
-              radial-gradient(ellipse 80% 60% at 70% 40%, rgba(139, 0, 0, 0.08) 0%, transparent 60%),
-              radial-gradient(ellipse 60% 80% at 20% 70%, rgba(30, 20, 20, 0.8) 0%, transparent 70%),
-              linear-gradient(160deg, #0f0a0a 0%, #080808 40%, #0d0d0d 100%)
+              radial-gradient(ellipse 90% 80% at 50% 50%, rgba(8, 8, 8, 0.4) 0%, rgba(8, 8, 8, 0.85) 100%),
+              linear-gradient(180deg, rgba(8, 8, 8, 0.6) 0%, rgba(8, 8, 8, 0.3) 50%, #080808 100%)
             `,
           }}
           aria-hidden="true"
         />
 
-        {/* Placeholder grid lines — cinematic atmosphere */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(245,245,240,1) 1px, transparent 1px), linear-gradient(90deg, rgba(245,245,240,1) 1px, transparent 1px)',
-            backgroundSize: '80px 80px',
-          }}
-          aria-hidden="true"
-        />
-
         {/* Letterbox bars */}
-        <div className="absolute top-0 left-0 right-0 h-[3vw] max-h-10 bg-[#080808] z-10" aria-hidden="true" />
-        <div className="absolute bottom-0 left-0 right-0 h-[3vw] max-h-10 bg-[#080808] z-10" aria-hidden="true" />
+        <div className="absolute top-0 left-0 right-0 h-[2vw] max-h-8 bg-[#080808] z-10" aria-hidden="true" />
+        <div className="absolute bottom-0 left-0 right-0 h-[2vw] max-h-8 bg-[#080808] z-10" aria-hidden="true" />
 
-        {/* Bottom gradient to blend into content */}
+        {/* Bottom smooth gradient transition */}
         <div className="absolute inset-0 cinematic-gradient z-20" aria-hidden="true" />
       </div>
 
