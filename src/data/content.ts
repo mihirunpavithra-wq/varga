@@ -283,6 +283,6 @@ export const contactInfo = {
   whatsappLink: 'https://wa.me/94770498850',
   youtube: 'https://youtube.com/@vargaproduction',
   facebook: 'https://web.facebook.com/people/VARGA/61595343985644/',
-  instagram: 'https://instagram.com/vargastudio',
+  instagram: 'https://www.instagram.com/matheesha.sk/',
   location: 'Sri Lanka',
 };
