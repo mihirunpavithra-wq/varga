@@ -42,9 +42,9 @@ export const projects: Project[] = [
     description: 'Cinematic birthday portrait session with classic red roses and moody ambient tones.',
     fullDescription:
       'A cinematic portrait photoshoot capturing celebration and elegance. Styled with vibrant red roses, dark attire, and soft ambient lighting to create a timeless, artistic memory.',
-    image: `${import.meta.env.BASE_URL}birthday-shoot.jpg`,
+    image: `${import.meta.env.BASE_URL}birthday-shoot-celebration.jpg`,
     gallery: [
-      `${import.meta.env.BASE_URL}birthday-shoot.jpg`,
+      `${import.meta.env.BASE_URL}birthday-shoot-celebration.jpg`,
       `${import.meta.env.BASE_URL}rose-bouquet-portrait.jpg`,
     ],
     tags: ['Birthday Shoot', 'Portrait', 'Lifestyle Photography', 'Studio Lighting'],
@@ -61,7 +61,7 @@ export const projects: Project[] = [
     image: `${import.meta.env.BASE_URL}rose-bouquet-portrait.jpg`,
     gallery: [
       `${import.meta.env.BASE_URL}rose-bouquet-portrait.jpg`,
-      `${import.meta.env.BASE_URL}birthday-shoot.jpg`,
+      `${import.meta.env.BASE_URL}birthday-shoot-celebration.jpg`,
     ],
     tags: ['Photography', 'Celebration Portrait', 'Rose Bouquet', 'Studio Session'],
     isDemo: false,
