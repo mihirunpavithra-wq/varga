@@ -69,19 +69,19 @@ export function Navbar() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="container-varga">
-          <nav className="flex items-center justify-between h-16 sm:h-20">
+          <nav className="flex items-center justify-between h-16 sm:h-20 w-full gap-2">
             {/* Logo */}
             <button
               onClick={() => scrollTo('#home')}
-              className="flex items-center gap-2.5 sm:gap-3 group text-left touch-manipulation"
+              className="flex items-center gap-2 sm:gap-3 group text-left touch-manipulation flex-shrink-0"
               aria-label="VARGA — go to home"
             >
               <img
                 src={`${import.meta.env.BASE_URL}varga-logo.png`}
                 alt="VARGA Logo"
-                className="h-9 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                className="h-8 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
-              <span className="font-display text-xl sm:text-2xl tracking-widest text-varga-white group-hover:text-varga-red transition-colors duration-200">
+              <span className="font-display text-xl sm:text-2xl tracking-widest text-varga-white group-hover:text-varga-red transition-colors duration-200 select-none">
                 VARGA
               </span>
             </button>
@@ -106,11 +106,11 @@ export function Navbar() {
             </ul>
 
             {/* CTA + Mobile Controls */}
-            <div className="flex items-center gap-2.5 sm:gap-4">
-              {/* Desktop Start Project */}
+            <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+              {/* Desktop Start Project Button - Strictly hidden on mobile */}
               <button
                 onClick={() => scrollTo('#contact')}
-                className="hidden md:flex btn-primary text-xs py-3 px-5"
+                className="!hidden md:!inline-flex btn-primary text-xs py-3 px-5 flex-shrink-0"
               >
                 Start a Project
                 <ArrowUpRight size={14} />
@@ -121,7 +121,7 @@ export function Navbar() {
                 href={contactInfo.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="md:hidden flex items-center gap-1.5 bg-[#25D366]/15 hover:bg-[#25D366]/25 active:scale-95 text-[#25D366] border border-[#25D366]/35 px-2.5 py-1.5 rounded-full text-[11px] font-heading font-semibold tracking-wider uppercase transition-all touch-manipulation"
+                className="md:hidden flex items-center gap-1.5 bg-[#25D366]/15 hover:bg-[#25D366]/25 active:scale-95 text-[#25D366] border border-[#25D366]/35 px-2.5 py-1.5 rounded-full text-[11px] font-heading font-semibold tracking-wider uppercase transition-all touch-manipulation flex-shrink-0"
                 aria-label="Chat on WhatsApp"
               >
                 <MessageCircle size={14} className="fill-current" />
@@ -130,7 +130,7 @@ export function Navbar() {
 
               {/* Hamburger Button */}
               <button
-                className="md:hidden text-varga-white p-2 -mr-1 rounded-lg border border-white/10 active:scale-95 transition-all touch-manipulation flex items-center justify-center bg-white/[0.04]"
+                className="md:hidden text-varga-white p-2 -mr-1 rounded-lg border border-white/10 active:scale-95 transition-all touch-manipulation flex items-center justify-center bg-white/[0.04] flex-shrink-0"
                 onClick={() => setMenuOpen((p) => !p)}
                 aria-label={menuOpen ? 'Close menu' : 'Open menu'}
                 aria-expanded={menuOpen}
