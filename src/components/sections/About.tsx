@@ -17,34 +17,30 @@ export function About() {
           {/* Left — Visual Panel */}
           <Reveal direction="left" className="relative order-2 lg:order-1 pt-6 pr-4 sm:pr-0">
             {/* Main visual block */}
-            <div className="relative aspect-[4/5] sm:aspect-[3/4] max-w-md mx-auto lg:mx-0 w-full">
-              {/* Dark panel with atmospheric gradient */}
+            <div className="relative aspect-[4/5] sm:aspect-[3/4] max-w-md mx-auto lg:mx-0 w-full overflow-hidden border border-white/[0.08] shadow-2xl">
+              {/* Founder Image */}
+              <img
+                src={`${import.meta.env.BASE_URL}founder-about.jpg`}
+                alt="VARGA Creative Direction"
+                className="w-full h-full object-cover object-top"
+              />
+
+              {/* Cinematic gradient overlay */}
               <div
                 className="absolute inset-0"
                 style={{
-                  background: 'linear-gradient(160deg, #1a0a0a 0%, #0f0f0f 40%, #1a1a2e 100%)',
+                  background: 'linear-gradient(to top, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.5) 45%, rgba(8,8,8,0.15) 100%)',
                 }}
               />
-              {/* Noise */}
-              <div
-                className="absolute inset-0 opacity-30"
-                style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.1'/%3E%3C/svg%3E")`,
-                }}
-                aria-hidden="true"
-              />
-              {/* Large watermark V */}
-              <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-                <span className="font-display text-white/[0.04]" style={{ fontSize: 'clamp(14rem, 28vw, 28rem)', lineHeight: 1 }}>V</span>
-              </div>
-              {/* Grid of values */}
-              <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-8">
+
+              {/* Grid of values over image */}
+              <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 backdrop-blur-[2px]">
                 {values.map((v, i) => (
-                  <div key={v.label} className={`pb-3.5 sm:pb-5 mb-3.5 sm:mb-5 ${i < values.length - 1 ? 'border-b border-white/[0.06]' : ''}`}>
-                    <p className="font-heading text-varga-red text-[10px] tracking-[0.2em] uppercase font-semibold mb-0.5 sm:mb-1">
+                  <div key={v.label} className={`pb-2.5 sm:pb-3 mb-2.5 sm:mb-3 ${i < values.length - 1 ? 'border-b border-white/[0.08]' : ''}`}>
+                    <p className="font-heading text-varga-red text-[10px] tracking-[0.2em] uppercase font-semibold mb-0.5">
                       {String(i + 1).padStart(2, '0')}
                     </p>
-                    <p className="font-heading text-varga-white text-xs sm:text-sm font-semibold mb-0.5 sm:mb-1">{v.label}</p>
+                    <p className="font-heading text-varga-white text-xs sm:text-sm font-semibold mb-0.5">{v.label}</p>
                     <p className="font-body text-varga-muted text-[11px] sm:text-xs leading-relaxed">{v.desc}</p>
                   </div>
                 ))}
