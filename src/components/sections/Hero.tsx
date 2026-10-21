@@ -16,13 +16,13 @@ export function Hero() {
       aria-label="Hero — VARGA Creative Studio"
     >
       {/* ── Cinematic Video Background ─────────────────────────── */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
-        {/* Responsive looping YouTube background video */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160vw] h-[160vh] min-w-[100%] min-h-[100%] opacity-45 scale-105 sm:scale-110">
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none bg-[#080808]">
+        {/* Full-bleed cropped cinematic showreel — fills all aspect ratios perfectly */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300vw] h-[300vh] sm:w-[180vw] sm:h-[180vh] min-w-[100vw] min-h-[100vh] opacity-55">
           <iframe
-            src="https://www.youtube.com/embed/AQtnBSXYVK8?autoplay=1&mute=1&loop=1&playlist=AQtnBSXYVK8&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
+            src="https://www.youtube.com/embed/AQtnBSXYVK8?autoplay=1&mute=1&loop=1&playlist=AQtnBSXYVK8&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&iv_load_policy=3&disablekb=1"
             title="VARGA Cinematic Showreel"
-            className="w-full h-full pointer-events-none"
+            className="w-full h-full object-cover pointer-events-none scale-125 sm:scale-115"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             tabIndex={-1}
             aria-hidden="true"
@@ -31,11 +31,11 @@ export function Hero() {
 
         {/* Cinematic dark tint & vignette overlay */}
         <div
-          className="absolute inset-0 bg-[#080808]/65"
+          className="absolute inset-0"
           style={{
             background: `
-              radial-gradient(ellipse 90% 80% at 50% 50%, rgba(8, 8, 8, 0.4) 0%, rgba(8, 8, 8, 0.85) 100%),
-              linear-gradient(180deg, rgba(8, 8, 8, 0.6) 0%, rgba(8, 8, 8, 0.3) 50%, #080808 100%)
+              radial-gradient(ellipse 95% 85% at 50% 50%, rgba(8, 8, 8, 0.35) 0%, rgba(8, 8, 8, 0.88) 100%),
+              linear-gradient(180deg, rgba(8, 8, 8, 0.65) 0%, rgba(8, 8, 8, 0.25) 45%, #080808 100%)
             `,
           }}
           aria-hidden="true"
