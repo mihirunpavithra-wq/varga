@@ -286,3 +286,18 @@ export const contactInfo = {
   instagram: 'https://www.instagram.com/matheesha.sk/',
   location: 'Sri Lanka',
 };
+
+// ─── Creator / Founder Info ───────────────────────────────────────────────
+export const founderInfo = {
+  name: 'Matheesha Mihisara',
+  role: 'Founder & Creative Mind',
+  motto: 'Think creatively. Create differently. Make it memorable.',
+  skills: [
+    'Cinematography',
+    'Photography',
+    'Graphic Design',
+    'Video Editing',
+    'Filmmaking',
+    'AI & Digital Visuals',
+  ],
+};

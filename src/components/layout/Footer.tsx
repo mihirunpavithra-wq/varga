@@ -125,8 +125,8 @@ export function Footer() {
       <div className="border-t border-white/[0.05]">
         <div className="container-varga py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-body text-varga-muted text-xs text-center sm:text-left">
-            © {year} VARGA Creative Studio. All rights reserved.
-            {' '}Based in Sri Lanka.
+            © {year} VARGA Creative Studio. Founded &amp; Directed by{' '}
+            <span className="text-varga-white font-medium">Matheesha Mihisara</span>. Based in Sri Lanka.
           </p>
 
           {/* Back to top */}
