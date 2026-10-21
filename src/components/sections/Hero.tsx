@@ -90,7 +90,7 @@ export function Hero() {
 
           {/* Main headline */}
           <motion.h1
-            className="font-display text-varga-white leading-[0.92] sm:leading-[0.9] mb-6 sm:mb-8 text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7.5rem] tracking-tight sm:tracking-normal"
+            className="font-display text-varga-white leading-[0.92] sm:leading-[0.9] mb-6 sm:mb-8 text-[2.75rem] xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7.5rem] tracking-tight sm:tracking-normal"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
@@ -114,23 +114,23 @@ export function Hero() {
 
           {/* CTA buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-3.5 sm:gap-4 w-full sm:w-auto"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <button onClick={scrollToPortfolio} className="btn-primary w-full sm:w-auto justify-center text-center">
+            <button onClick={scrollToPortfolio} className="btn-primary w-full sm:w-auto justify-center text-center py-3.5 sm:py-3.5 active:scale-[0.98] touch-manipulation">
               Explore Our Work
               <ArrowUpRight size={15} />
             </button>
-            <button onClick={scrollToContact} className="btn-outline w-full sm:w-auto justify-center text-center">
+            <button onClick={scrollToContact} className="btn-outline w-full sm:w-auto justify-center text-center py-3.5 sm:py-3.5 active:scale-[0.98] touch-manipulation">
               Start a Project
             </button>
           </motion.div>
 
           {/* Stats row */}
           <motion.div
-            className="grid grid-cols-3 gap-3 sm:gap-8 mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-white/[0.08]"
+            className="grid grid-cols-3 gap-2 sm:gap-8 mt-10 sm:mt-16 pt-5 sm:pt-8 border-t border-white/[0.08]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 1.1 }}
@@ -144,7 +144,7 @@ export function Hero() {
                 <div className="font-display text-varga-white text-xl sm:text-2xl md:text-3xl tracking-wide">
                   {stat.value}
                 </div>
-                <div className="font-heading text-varga-muted text-[9px] sm:text-[11px] md:text-xs tracking-wider sm:tracking-widest uppercase mt-1">
+                <div className="font-heading text-varga-muted text-[8.5px] xs:text-[10px] sm:text-[11px] md:text-xs tracking-wider sm:tracking-widest uppercase mt-0.5 sm:mt-1">
                   {stat.label}
                 </div>
               </div>

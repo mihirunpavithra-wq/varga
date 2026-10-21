@@ -1,6 +1,6 @@
 import { useState, useId } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, MessageCircle, MapPin, ArrowUpRight, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, MessageCircle, MapPin, ArrowUpRight, CheckCircle, Phone } from 'lucide-react';
 import { Instagram, Youtube, Facebook } from '@/components/ui/Icons';
 import { contactInfo } from '@/data/content';
 import { Reveal } from '@/components/ui/Reveal';
@@ -84,7 +84,7 @@ export function Contact() {
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) e.email = 'Please enter a valid email.';
     if (!data.projectType) e.projectType = 'Please select a project type.';
     if (!data.message.trim()) e.message = 'Please describe your project.';
-    else if (data.message.trim().length < 20) e.message = 'Please write at least 20 characters.';
+    else if (data.message.trim().length < 15) e.message = 'Please write at least 15 characters.';
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -124,9 +124,9 @@ export function Contact() {
     <section id="contact" className="section-padding bg-[#0a0a0a]" aria-labelledby="contact-heading">
       <div className="container-varga">
         {/* Header */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16">
           <Reveal>
-            <p className="font-heading text-varga-red text-xs font-semibold tracking-[0.25em] uppercase mb-4">
+            <p className="font-heading text-varga-red text-xs font-semibold tracking-[0.25em] uppercase mb-3 sm:mb-4">
               Get In Touch
             </p>
             <h2
@@ -138,29 +138,35 @@ export function Contact() {
             </h2>
           </Reveal>
           <Reveal delay={0.1} className="flex items-end">
-            <p className="font-body text-varga-muted leading-relaxed max-w-sm">
+            <p className="font-body text-varga-muted text-sm sm:text-base leading-relaxed max-w-sm">
               Tell us about your project. We will get back to you within 24 hours to
               discuss ideas, timeline, and what we can create together.
             </p>
           </Reveal>
         </div>
 
-        <div className="grid lg:grid-cols-[1fr_380px] gap-12 lg:gap-20">
+        <div className="grid lg:grid-cols-[1fr_380px] gap-10 lg:gap-16">
           {/* ── Form ──────────────────────────────────────────────── */}
           <Reveal>
             <AnimatePresence mode="wait">
               {formState === 'success' ? (
                 <motion.div
                   key="success"
-                  className="flex flex-col items-center justify-center text-center py-20 border border-varga-red/20"
+                  className="flex flex-col items-center justify-center text-center py-16 sm:py-20 border border-varga-red/20 bg-white/[0.02] p-6 rounded-sm"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
-                  <CheckCircle size={48} className="text-varga-red mb-6" />
-                  <h3 className="font-display text-varga-white text-3xl mb-4">Message Sent!</h3>
-                  <p className="font-body text-varga-muted max-w-sm">
-                    Thank you for reaching out. We will be in touch within 24 hours.
+                  <CheckCircle size={48} className="text-varga-red mb-5" />
+                  <h3 className="font-display text-varga-white text-3xl mb-3">Enquiry Ready!</h3>
+                  <p className="font-body text-varga-muted max-w-sm text-sm sm:text-base mb-6 leading-relaxed">
+                    Your details have been prepared for WhatsApp chat (+94 77 049 8850). We look forward to working with you!
                   </p>
+                  <button
+                    onClick={() => setFormState('idle')}
+                    className="btn-outline text-xs tracking-wider uppercase py-3 px-6 touch-manipulation active:scale-95"
+                  >
+                    Submit Another Enquiry
+                  </button>
                 </motion.div>
               ) : (
                 <motion.form
@@ -168,28 +174,29 @@ export function Contact() {
                   onSubmit={handleSubmit}
                   noValidate
                   aria-label="Project enquiry form"
-                  className="space-y-6"
+                  className="space-y-5 sm:space-y-6"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                 >
-                  <div className="bg-[#0f1f14] border border-emerald-900/50 px-4 py-3 flex items-center gap-3">
-                    <MessageCircle size={18} className="text-emerald-400 flex-shrink-0" />
-                    <p className="font-body text-emerald-400/90 text-xs leading-relaxed">
+                  {/* WhatsApp instant submit notice */}
+                  <div className="bg-[#0f1f14] border border-emerald-900/60 px-4 py-3.5 rounded-sm flex items-start sm:items-center gap-3">
+                    <MessageCircle size={18} className="text-emerald-400 flex-shrink-0 mt-0.5 sm:mt-0" />
+                    <p className="font-body text-emerald-400/90 text-xs sm:text-sm leading-relaxed">
                       Submit කළ සැණින් ඔබගේ විස්තර සමඟ අපගේ <strong>WhatsApp (+94 77 049 8850)</strong> chat එක කෙලින්ම විවෘත වේ.
                     </p>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-6">
+                  <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                     <FormField label="Your Name" id={`${formId}-name`} error={errors.name} required>
                       <input
                         id={`${formId}-name`}
                         type="text"
                         autoComplete="name"
-                        placeholder="Jane Smith"
+                        placeholder="Your full name"
                         value={data.name}
                         onChange={update('name')}
                         disabled={isSubmitting}
-                        className="form-field"
+                        className="form-field min-h-[48px]"
                         aria-required="true"
                         aria-invalid={!!errors.name}
                       />
@@ -200,11 +207,11 @@ export function Contact() {
                         id={`${formId}-email`}
                         type="email"
                         autoComplete="email"
-                        placeholder="jane@company.com"
+                        placeholder="yourname@gmail.com"
                         value={data.email}
                         onChange={update('email')}
                         disabled={isSubmitting}
-                        className="form-field"
+                        className="form-field min-h-[48px]"
                         aria-required="true"
                         aria-invalid={!!errors.email}
                       />
@@ -217,7 +224,7 @@ export function Contact() {
                       value={data.projectType}
                       onChange={update('projectType')}
                       disabled={isSubmitting}
-                      className="form-field appearance-none"
+                      className="form-field min-h-[48px] bg-[#141414] text-white"
                       aria-required="true"
                       aria-invalid={!!errors.projectType}
                     >
@@ -228,14 +235,14 @@ export function Contact() {
                     </select>
                   </FormField>
 
-                  <div className="grid sm:grid-cols-2 gap-6">
+                  <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                     <FormField label="Estimated Budget" id={`${formId}-budget`}>
                       <select
                         id={`${formId}-budget`}
                         value={data.budget}
                         onChange={update('budget')}
                         disabled={isSubmitting}
-                        className="form-field appearance-none"
+                        className="form-field min-h-[48px] bg-[#141414] text-white"
                       >
                         <option value="" disabled>Select a range…</option>
                         {BUDGETS.map((b) => (
@@ -248,11 +255,11 @@ export function Contact() {
                       <input
                         id={`${formId}-deadline`}
                         type="text"
-                        placeholder="e.g. December 2025 or ASAP"
+                        placeholder="e.g. Next month or Urgent"
                         value={data.deadline}
                         onChange={update('deadline')}
                         disabled={isSubmitting}
-                        className="form-field"
+                        className="form-field min-h-[48px]"
                       />
                     </FormField>
                   </div>
@@ -260,8 +267,8 @@ export function Contact() {
                   <FormField label="Tell us about your project" id={`${formId}-message`} error={errors.message} required>
                     <textarea
                       id={`${formId}-message`}
-                      rows={5}
-                      placeholder="Describe your project, goals, references, or anything that helps us understand what you need…"
+                      rows={4}
+                      placeholder="Describe your vision, requirements, location, or ideas…"
                       value={data.message}
                       onChange={update('message')}
                       disabled={isSubmitting}
@@ -271,22 +278,20 @@ export function Contact() {
                     />
                   </FormField>
 
-
-
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="btn-primary w-full justify-center py-4 text-sm disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="btn-primary w-full justify-center py-4 text-xs sm:text-sm font-heading font-semibold tracking-wider uppercase active:scale-[0.98] touch-manipulation disabled:opacity-60 disabled:cursor-not-allowed"
                     aria-busy={isSubmitting}
                   >
                     {isSubmitting ? (
                       <>
                         <div className="spinner" aria-hidden="true" />
-                        Sending…
+                        Opening WhatsApp…
                       </>
                     ) : (
                       <>
-                        <MessageCircle size={18} />
+                        <MessageCircle size={18} className="fill-current" />
                         Send via WhatsApp
                         <ArrowUpRight size={16} />
                       </>
@@ -298,115 +303,141 @@ export function Contact() {
           </Reveal>
 
           {/* ── Contact Details ────────────────────────────────────── */}
-          <Reveal delay={0.15} className="space-y-8">
-            {/* Direct contact */}
-            <div>
+          <Reveal delay={0.15} className="space-y-6 sm:space-y-8">
+            {/* Direct contact list */}
+            <div className="bg-white/[0.02] p-5 sm:p-6 border border-white/[0.06] rounded-sm">
               <p className="form-label mb-4">Direct Contact</p>
               <div className="space-y-4">
+                {/* Email */}
                 <a
                   href={`mailto:${contactInfo.email}`}
-                  className="flex items-center gap-4 group"
+                  className="flex items-center gap-3.5 group active:scale-98 transition-all touch-manipulation"
                   aria-label={`Email us at ${contactInfo.email}`}
                 >
-                  <div className="w-10 h-10 border border-white/[0.08] flex items-center justify-center group-hover:border-varga-red transition-colors">
+                  <div className="w-10 h-10 border border-white/[0.1] bg-white/[0.03] flex items-center justify-center group-hover:border-varga-red rounded-sm transition-colors flex-shrink-0">
                     <Mail size={16} className="text-varga-muted group-hover:text-varga-red transition-colors" />
                   </div>
-                  <div>
-                    <p className="form-label mb-0.5">Email</p>
-                    {/* ⚠️  Replace with your real email */}
-                    <p className="font-body text-varga-white text-sm group-hover:text-varga-red transition-colors">
+                  <div className="min-w-0">
+                    <p className="form-label mb-0.5 text-[10px]">Email</p>
+                    <p className="font-body text-varga-white text-xs sm:text-sm group-hover:text-varga-red transition-colors truncate">
                       {contactInfo.email}
                     </p>
                   </div>
                 </a>
 
+                {/* WhatsApp */}
                 <a
                   href={contactInfo.whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 group"
+                  className="flex items-center gap-3.5 group active:scale-98 transition-all touch-manipulation"
                   aria-label="Contact us on WhatsApp"
                 >
-                  <div className="w-10 h-10 border border-white/[0.08] flex items-center justify-center group-hover:border-varga-red transition-colors">
-                    <MessageCircle size={16} className="text-varga-muted group-hover:text-varga-red transition-colors" />
+                  <div className="w-10 h-10 border border-white/[0.1] bg-white/[0.03] flex items-center justify-center group-hover:border-[#25D366] rounded-sm transition-colors flex-shrink-0">
+                    <MessageCircle size={16} className="text-varga-muted group-hover:text-[#25D366] transition-colors" />
                   </div>
                   <div>
-                    <p className="form-label mb-0.5">WhatsApp</p>
-                    {/* ⚠️  Replace with your real number */}
-                    <p className="font-body text-varga-white text-sm group-hover:text-varga-red transition-colors">
+                    <p className="form-label mb-0.5 text-[10px]">WhatsApp Chat</p>
+                    <p className="font-body text-varga-white text-xs sm:text-sm group-hover:text-[#25D366] transition-colors font-semibold">
                       {contactInfo.whatsapp}
                     </p>
                   </div>
                 </a>
 
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 border border-white/[0.08] flex items-center justify-center">
+                {/* Direct Call */}
+                <a
+                  href={`tel:${contactInfo.whatsapp.replace(/\s+/g, '')}`}
+                  className="flex items-center gap-3.5 group active:scale-98 transition-all touch-manipulation"
+                  aria-label="Call VARGA Studio directly"
+                >
+                  <div className="w-10 h-10 border border-white/[0.1] bg-white/[0.03] flex items-center justify-center group-hover:border-varga-red rounded-sm transition-colors flex-shrink-0">
+                    <Phone size={16} className="text-varga-muted group-hover:text-varga-red transition-colors" />
+                  </div>
+                  <div>
+                    <p className="form-label mb-0.5 text-[10px]">Direct Call</p>
+                    <p className="font-body text-varga-white text-xs sm:text-sm group-hover:text-varga-red transition-colors">
+                      {contactInfo.whatsapp}
+                    </p>
+                  </div>
+                </a>
+
+                {/* Location */}
+                <div className="flex items-center gap-3.5">
+                  <div className="w-10 h-10 border border-white/[0.1] bg-white/[0.03] flex items-center justify-center rounded-sm flex-shrink-0">
                     <MapPin size={16} className="text-varga-muted" />
                   </div>
                   <div>
-                    <p className="form-label mb-0.5">Location</p>
-                    <p className="font-body text-varga-white text-sm">{contactInfo.location}</p>
+                    <p className="form-label mb-0.5 text-[10px]">Location</p>
+                    <p className="font-body text-varga-white text-xs sm:text-sm">{contactInfo.location}</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* WhatsApp CTA */}
-            <a
-              href={contactInfo.whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline w-full justify-center gap-2 py-4"
-            >
-              <MessageCircle size={16} />
-              Chat on WhatsApp
-            </a>
+            {/* Quick Action CTA Buttons */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <a
+                href={contactInfo.whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white py-3.5 px-4 font-heading text-xs font-semibold tracking-wider uppercase transition-all touch-manipulation rounded-sm shadow-md"
+              >
+                <MessageCircle size={16} className="fill-current" />
+                <span>WhatsApp</span>
+              </a>
+              <a
+                href={`tel:${contactInfo.whatsapp.replace(/\s+/g, '')}`}
+                className="btn-outline justify-center gap-2 py-3.5 px-4 text-xs font-semibold tracking-wider uppercase active:scale-95 touch-manipulation rounded-sm"
+              >
+                <Phone size={15} />
+                <span>Call Now</span>
+              </a>
+            </div>
 
-            {/* Social */}
+            {/* Social Channels */}
             <div>
-              <p className="form-label mb-4">Follow Our Work</p>
-              <div className="flex flex-wrap gap-3">
+              <p className="form-label mb-3">Official Social Channels</p>
+              <div className="flex flex-wrap gap-2.5">
+                <a
+                  href={contactInfo.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 border border-white/[0.1] bg-white/[0.02] px-3.5 py-2.5 text-varga-muted hover:border-varga-red hover:text-varga-red active:scale-95 transition-all duration-200 rounded-sm touch-manipulation"
+                  aria-label="VARGA on Instagram"
+                >
+                  <Instagram size={15} />
+                  <span className="font-heading text-xs tracking-wider uppercase">Instagram</span>
+                </a>
                 <a
                   href={contactInfo.youtube}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 border border-white/[0.08] px-4 py-2.5 text-varga-muted hover:border-varga-red hover:text-varga-red transition-all duration-200"
+                  className="flex items-center gap-2 border border-white/[0.1] bg-white/[0.02] px-3.5 py-2.5 text-varga-muted hover:border-varga-red hover:text-varga-red active:scale-95 transition-all duration-200 rounded-sm touch-manipulation"
                   aria-label="VARGA on YouTube"
                 >
                   <Youtube size={15} />
-                  <span className="font-heading text-xs tracking-widest uppercase">YouTube</span>
+                  <span className="font-heading text-xs tracking-wider uppercase">YouTube</span>
                 </a>
                 <a
                   href={contactInfo.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 border border-white/[0.08] px-4 py-2.5 text-varga-muted hover:border-varga-red hover:text-varga-red transition-all duration-200"
+                  className="flex items-center gap-2 border border-white/[0.1] bg-white/[0.02] px-3.5 py-2.5 text-varga-muted hover:border-varga-red hover:text-varga-red active:scale-95 transition-all duration-200 rounded-sm touch-manipulation"
                   aria-label="VARGA on Facebook"
                 >
                   <Facebook size={15} />
-                  <span className="font-heading text-xs tracking-widest uppercase">Facebook</span>
-                </a>
-                <a
-                  href={contactInfo.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 border border-white/[0.08] px-4 py-2.5 text-varga-muted hover:border-varga-red hover:text-varga-red transition-all duration-200"
-                  aria-label="VARGA on Instagram"
-                >
-                  <Instagram size={15} />
-                  <span className="font-heading text-xs tracking-widest uppercase">Instagram</span>
+                  <span className="font-heading text-xs tracking-wider uppercase">Facebook</span>
                 </a>
               </div>
             </div>
 
-            {/* Response time */}
-            <div className="border border-white/[0.05] p-5">
-              <p className="font-heading text-varga-white text-sm font-semibold mb-2">
-                Response Time
+            {/* Response Time Badge */}
+            <div className="border border-white/[0.06] bg-white/[0.02] p-4 sm:p-5 rounded-sm">
+              <p className="font-heading text-varga-white text-xs sm:text-sm font-semibold mb-1 sm:mb-1.5">
+                Response Guarantee
               </p>
-              <p className="font-body text-varga-muted text-sm leading-relaxed">
-                We aim to respond to all enquiries within 24 hours. For urgent projects,
-                please reach out via WhatsApp.
+              <p className="font-body text-varga-muted text-xs sm:text-sm leading-relaxed">
+                We respond within 24 hours. For urgent or same-week shoots, please message or call via WhatsApp directly.
               </p>
             </div>
           </Reveal>

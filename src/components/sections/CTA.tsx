@@ -5,7 +5,7 @@ import { Reveal } from '@/components/ui/Reveal';
 export function CTA() {
   return (
     <section
-      className="relative overflow-hidden py-32 md:py-40"
+      className="relative overflow-hidden py-20 sm:py-32 md:py-40"
       aria-labelledby="cta-heading"
     >
       {/* Cinematic BG */}
@@ -61,10 +61,10 @@ export function CTA() {
           </p>
         </Reveal>
 
-        <Reveal delay={0.3} className="mt-8 sm:mt-12 flex justify-center">
+        <Reveal delay={0.3} className="mt-8 sm:mt-12 flex justify-center px-4 sm:px-0">
           <button
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="btn-primary text-xs sm:text-sm py-3.5 sm:py-4 px-6 sm:px-8 w-full sm:w-auto justify-center"
+            className="btn-primary text-xs sm:text-sm py-3.5 sm:py-4 px-6 sm:px-8 w-full sm:w-auto justify-center active:scale-[0.98] touch-manipulation"
           >
             Start Your Project
             <ArrowUpRight size={16} />

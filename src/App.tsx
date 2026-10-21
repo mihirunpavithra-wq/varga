@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 // Layout
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import { QuickWhatsApp } from '@/components/ui/QuickWhatsApp';
 
 // Sections
 import { Hero } from '@/components/sections/Hero';
@@ -104,6 +105,7 @@ export default function App() {
             </main>
 
             <Footer />
+            <QuickWhatsApp />
           </motion.div>
         )}
       </AnimatePresence>

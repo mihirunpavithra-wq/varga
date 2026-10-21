@@ -49,12 +49,12 @@ export function About() {
 
             {/* Floating accent box */}
             <motion.div
-              className="absolute top-0 right-0 sm:-top-6 sm:-right-6 md:-right-10 bg-varga-red p-4 sm:p-6 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 flex flex-col justify-center shadow-2xl"
+              className="absolute -top-3 right-2 sm:-top-6 sm:-right-6 md:-right-10 bg-varga-red p-3 sm:p-6 w-20 h-20 sm:w-32 sm:h-32 md:w-40 md:h-40 flex flex-col justify-center shadow-2xl z-20"
               animate={{ y: [0, -6, 0] }}
               transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
             >
-              <div className="font-display text-white text-3xl sm:text-4xl md:text-5xl leading-none">SL</div>
-              <div className="font-heading text-white/80 text-[8px] sm:text-[10px] tracking-widest uppercase mt-1 sm:mt-2">Sri Lanka</div>
+              <div className="font-display text-white text-2xl sm:text-4xl md:text-5xl leading-none">SL</div>
+              <div className="font-heading text-white/80 text-[7px] sm:text-[10px] tracking-widest uppercase mt-0.5 sm:mt-2">Sri Lanka</div>
             </motion.div>
           </Reveal>
 

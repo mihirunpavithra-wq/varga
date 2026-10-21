@@ -34,6 +34,12 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Touch manipulation for responsive snappy mobile interactions */
+button, a, input, select, textarea {
+  touch-action: manipulation;
 }
 
 /* ─── Scrollbar ──────────────────────────────────────────────────────────── */
@@ -295,10 +301,11 @@ body {
   color: var(--varga-white);
   padding: 0.875rem 1rem;
   font-family: 'Inter', sans-serif;
-  font-size: 0.9375rem;
+  font-size: 16px; /* Essential: prevents iOS Safari auto-zoom on focus */
   transition: border-color 0.2s ease;
   outline: none;
   resize: none;
+  border-radius: 2px;
 }
 .form-field::placeholder { color: var(--varga-muted); }
 .form-field:focus { border-color: var(--varga-red); }
@@ -330,9 +337,21 @@ body {
   color: rgba(192, 57, 43, 0.35);
 }
 
-/* ─── Scrollbar Hide (for marquee) ──────────────────────────────────────── */
+/* ─── Scrollbar Hide (for marquee & horizontal tabs) ───────────────────── */
 .hide-scrollbar::-webkit-scrollbar { display: none; }
-.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile Safe Areas */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.bottom-safe {
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+}
 
 /* ─── Focus Styles ───────────────────────────────────────────────────────── */
 :focus-visible {
