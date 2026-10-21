@@ -82,6 +82,30 @@ export const projects: Project[] = [
     isDemo: false,
   },
   {
+    id: 'lotus-portrait-01',
+    title: 'Purple Lotus Traditional Portrait',
+    category: 'Photography',
+    year: 2024,
+    description: 'Serene outdoor portrait capturing Sri Lankan heritage, soft daylight, and purple lotus blooms.',
+    fullDescription:
+      'A cultural and lifestyle portrait study blending timeless Sri Lankan beauty with sacred purple lotus blooms (Nil Manel). Captured against ancient brick textures with soft, flattering natural bokeh.',
+    image: `${import.meta.env.BASE_URL}lotus-portrait-photography.jpg`,
+    tags: ['Photography', 'Heritage Portrait', 'Natural Light', 'Cultural Aesthetics'],
+    isDemo: false,
+  },
+  {
+    id: 'lakeside-cinematic-01',
+    title: 'Lakeside Serenity Cinematic Visual',
+    category: 'Cinematography',
+    year: 2024,
+    description: 'Atmospheric widescreen landscape cinematography with reflective water and flying birds.',
+    fullDescription:
+      'A contemplative cinematic frame capturing calm reflection by the wooden pier. Composed with birds in motion, tranquil waters, and peaceful solitary storytelling.',
+    image: `${import.meta.env.BASE_URL}lakeside-cinematic-session.jpg`,
+    tags: ['Cinematography', 'Landscape Frame', 'Reflective Waters', 'Visual Story'],
+    isDemo: false,
+  },
+  {
     id: 'demo-01',
     title: 'Horizon Brand Film',
     category: 'Cinematography',
@@ -254,7 +278,7 @@ export const navLinks = [
 
 // ─── Contact Info ─────────────────────────────────────────────────────────
 export const contactInfo = {
-  email: 'hello@vargastudio.lk',
+  email: 'matheeshamihisara3m@gmail.com',
   whatsapp: '+94 77 049 8850',
   whatsappLink: 'https://wa.me/94770498850',
   youtube: 'https://youtube.com/@vargaproduction',
