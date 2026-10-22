@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, X, MessageCircle } from 'lucide-react';
+import { ArrowUpRight, X, MessageCircle, Play } from 'lucide-react';
 import { projects, type Project, type ProjectCategory, contactInfo } from '@/data/content';
 import { Reveal, Stagger, staggerItem } from '@/components/ui/Reveal';
 
@@ -8,7 +8,7 @@ const ALL = 'All';
 const categories: (typeof ALL | ProjectCategory)[] = [
   ALL,
   'Cinematography',
-  'Commercial Videos',
+  'Cinematic Videos',
   'Photography',
   'Brand Identity',
   'Digital Content',
@@ -66,8 +66,15 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
         aria-hidden="true"
       />
 
+      {/* Video indicator badge */}
+      {project.youtubeId && (
+        <div className="absolute top-3 right-3 z-20 bg-varga-red text-white p-2 sm:p-2.5 rounded-full shadow-[0_4px_20px_rgba(192,57,43,0.6)] group-hover:scale-110 transition-transform flex items-center justify-center">
+          <Play size={13} className="fill-current ml-0.5" />
+        </div>
+      )}
+
       {/* Demo badge */}
-      {project.isDemo && (
+      {project.isDemo && !project.youtubeId && (
         <div className="absolute top-3 right-3 z-20 bg-[#080808]/85 border border-white/10 px-2 py-0.5 text-[10px] font-heading tracking-widest uppercase text-varga-muted backdrop-blur-sm rounded-sm">
           Demo
         </div>
@@ -98,8 +105,10 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
           {project.description}
         </p>
         <div className="flex items-center gap-1.5 text-varga-red">
-          <span className="font-heading text-[11px] font-semibold tracking-widest uppercase">View Details</span>
-          <ArrowUpRight size={13} />
+          <span className="font-heading text-[11px] font-semibold tracking-widest uppercase">
+            {project.youtubeId ? 'Watch Video' : 'View Details'}
+          </span>
+          {project.youtubeId ? <Play size={12} className="fill-current" /> : <ArrowUpRight size={13} />}
         </div>
       </div>
     </motion.div>
@@ -154,17 +163,27 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             <X size={18} />
           </button>
 
-          {/* Image area */}
-          <div className="relative aspect-[16/10] sm:aspect-video overflow-hidden flex-shrink-0 bg-[#080808]" style={bg}>
-            {activeImage ? (
+          {/* Media area: Video Player or Image */}
+          <div className="relative aspect-video overflow-hidden flex-shrink-0 bg-black" style={bg}>
+            {project.youtubeId ? (
+              <iframe
+                src={`https://www.youtube.com/embed/${project.youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+                title={project.title}
+                className="w-full h-full border-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            ) : activeImage ? (
               <img
                 src={activeImage}
                 alt={project.title}
                 className="w-full h-full object-cover object-center transition-all duration-300"
               />
             ) : null}
-            <div className="absolute inset-0 cinematic-gradient pointer-events-none" />
-            {project.isDemo && (
+            {!project.youtubeId && (
+              <div className="absolute inset-0 cinematic-gradient pointer-events-none" />
+            )}
+            {project.isDemo && !project.youtubeId && (
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <span className="font-display text-white/10 text-4xl sm:text-6xl tracking-widest">
                   DEMO
@@ -183,6 +202,22 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                 {project.title}
               </h2>
             </div>
+
+            {/* Direct YouTube link if video */}
+            {project.youtubeId && (
+              <div className="pt-0.5">
+                <a
+                  href={`https://youtube.com/shorts/${project.youtubeId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-heading font-semibold text-varga-red hover:text-white transition-colors uppercase tracking-wider bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-sm"
+                >
+                  <Play size={12} className="fill-current text-varga-red" />
+                  <span>Watch on YouTube Shorts</span>
+                  <ArrowUpRight size={13} />
+                </a>
+              </div>
+            )}
 
             {/* Gallery Thumbnails (if multiple photos available) */}
             {project.gallery && project.gallery.length > 1 && (

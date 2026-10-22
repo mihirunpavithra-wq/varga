@@ -1,7 +1,7 @@
 // ─── Project / Portfolio Data ─────────────────────────────────────────────
 export type ProjectCategory =
   | 'Cinematography'
-  | 'Commercial Videos'
+  | 'Cinematic Videos'
   | 'Photography'
   | 'Brand Identity'
   | 'Digital Content'
@@ -16,6 +16,8 @@ export interface Project {
   fullDescription: string;
   placeholder?: string; // gradient / color used as fallback
   image?: string; // real photograph URL
+  videoUrl?: string; // video embed link
+  youtubeId?: string; // YouTube ID for responsive player
   gallery?: string[]; // optional additional gallery images
   tags: string[];
   isDemo?: boolean;
@@ -67,15 +69,17 @@ export const projects: Project[] = [
     isDemo: false,
   },
   {
-    id: 'commercial-nature-01',
-    title: 'Enchanted Waters Commercial Study',
-    category: 'Commercial Videos',
+    id: 'cinematic-video-01',
+    title: 'Cinematic Video',
+    category: 'Cinematic Videos',
     year: 2024,
-    description: 'Striking promotional visual featuring water motion, red satin contrast, and forest ambiance.',
+    description: 'Atmospheric Sri Lankan temple and nature visual captured with cinematic drone aerials and color grade.',
     fullDescription:
-      'A cinematic commercial shoot set within wetland forest waters. Designed with dynamic water splashes, bold red styling against lush greens, and high-speed freeze-frame cinematography.',
-    image: `${import.meta.env.BASE_URL}enchanted-waters-commercial.jpg`,
-    tags: ['Commercial Videos', 'Water Motion', 'Fashion Cinematography', 'Color Grade'],
+      'A cinematic visual journey capturing the spiritual calm of temple architecture and lush Sri Lankan landscapes. Produced with high-altitude drone cinematography, rich color grading, and peaceful ambient storytelling.',
+    image: `${import.meta.env.BASE_URL}cinematic-video-thumb.jpg`,
+    videoUrl: 'https://www.youtube.com/embed/IIWjGxu0ETw',
+    youtubeId: 'IIWjGxu0ETw',
+    tags: ['Cinematic Video', 'Drone Visuals', 'Temple & Nature', 'Color Grade', '4K Production'],
     isDemo: false,
   },
   {
@@ -157,7 +161,7 @@ export const projects: Project[] = [
   {
     id: 'demo-02',
     title: 'Pulse Commercial',
-    category: 'Commercial Videos',
+    category: 'Cinematic Videos',
     year: 2024,
     description: 'High-energy 60-second commercial for a beverage brand.',
     fullDescription:
